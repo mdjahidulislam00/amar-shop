@@ -9,7 +9,7 @@ const Footer = () => {
                     <p className='text-4xl font-bold py-3'>AmarShop</p>
                     <p className='text-gray-400'>Largest product search engine, maximum categorized online shopping mall and quickest home delivery system.</p>
                     <div className="socialLink mt-3 py-2 flex">
-                    <span className="flex items-center">Follow us : <span className="ring-2 text-xl rounded-full ml-3 p-1"><FaFacebook /></span><span className="ring-2 text-xl rounded-full ml-3 p-1"><FaYoutube /></span><span className="ring-2 text-xl rounded-full ml-3 p-1"><FaTwitter /></span><span className="ring-2 text-xl rounded-full ml-3 p-1"><FaLinkedin /></span>  </span>    
+                    <span className="flex items-center py-2">Follow us : <span className="ring-2 text-xl rounded-full ml-3 p-1"><FaFacebook /></span><span className="ring-2 text-xl rounded-full ml-3 p-1"><FaYoutube /></span><span className="ring-2 text-xl rounded-full ml-3 p-1"><FaTwitter /></span><span className="ring-2 text-xl rounded-full ml-3 p-1"><FaLinkedin /></span>  </span>    
                     </div>
                 </div>
                 <div className="branding text-white">
