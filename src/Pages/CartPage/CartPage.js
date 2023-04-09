@@ -1,9 +1,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { getShoppingCart, removeFromDb } from '../../ema-john-resources-main/utilities/fakedb';
+import { deleteShoppingCart, getShoppingCart, removeFromDb } from '../../ema-john-resources-main/utilities/fakedb';
 import FakeData from '../../ema-john-resources-main/fakeData/products.json'
 import ReviewItemsCard from '../../Components/RevewItmsCard/ReviewItemsCard';
+import ReviewCart from '../../Components/ReviewCart/ReviewCart';
+
 const CartPage = () => {
     const [CartProduct, setCartProduct] = useState([]);
     const RemoveProductFromSave = (id) => {
@@ -22,13 +24,25 @@ const CartPage = () => {
             return saveProducts;
         })
             setCartProduct(saveCartProducts);
-    },[])
+    },[]);
+
+    const OrderConfirmHandel = () =>{
+        deleteShoppingCart();
+        setCartProduct([]);   
+    }
     return (
         <div className="bg-gray-400">
             <div className="ReviewHeader py-5 text-center text-4xl font-bold">Product Review</div>
-            {
-                CartProduct.map(pd => <ReviewItemsCard pd={pd} RemoveProductFromSave={RemoveProductFromSave}></ReviewItemsCard> )
-            }
+            <div className="Review-Container flex flex-row">
+                <div className="Items-container basis-9/12">
+                    {
+                        CartProduct.map(pd => <ReviewItemsCard key={pd.id} product={pd} RemoveProductFromSave={RemoveProductFromSave}></ReviewItemsCard> )
+                    }
+                </div>
+                <div className="cart-container basis-3/12">
+                    <ReviewCart OrderConfirmHandel={OrderConfirmHandel} addToCart={CartProduct} ></ReviewCart>
+                </div>
+            </div>
         </div>
     );
 };

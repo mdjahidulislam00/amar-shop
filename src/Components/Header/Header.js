@@ -15,7 +15,7 @@ const Header = () => {
                     </div>
                     <div className="SearchOption ">
                     <div className="Option flex flex-row">
-                        <input className="w-96 h-12  px-3 py-2 focus:outline-none  focus:border-2 border-yellow-700 rounded-l-md" type="text" placeholder="Search what you want" />
+                        <input className="w-96 h-12  px-3 py-2 focus:outline-none  focus:border-2 border-gray-500 rounded-l-md" type="text" placeholder="Search what you want" />
                         <div className='w-16 h-12 bg-yellow-500 text-white p-3 rounded-r-md flex items-center justify-center cursor-pointer hover:bg-yellow-400' type='submit'> <FaSearch /> </div>
                     </div>
                 </div>

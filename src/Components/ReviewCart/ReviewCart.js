@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ReviewCart = (props) => {
-    console.log(props.product)
-    const addToCarts = props.product;
-    const totalPrice = addToCarts.reduce((totalPrice, items) => totalPrice + items.price , 0);
+    const addToCarts = props.addToCart;
+    const totalPrice = addToCarts.reduce((totalPrice, items) => totalPrice + items.price * items.quantity , 0);
 
     let Shipping = 0;
     if(totalPrice !== 0 && totalPrice < 100){
@@ -14,6 +14,7 @@ const ReviewCart = (props) => {
     }
     const Total = totalPrice + Shipping;
     const TaxAndVat = Total/10;
+
     return (
         <div>
             <div className="w-60 h-80 border-4 border-white flex flex-col items-center justify-between bg-gray-300 rounded mx-5">
@@ -26,7 +27,7 @@ const ReviewCart = (props) => {
                     <p><span className="font-bold ">Tax & Vat :</span> {TaxAndVat} $</p>
                 </div>
                 <p className='text-lg text-red-500 font-bold text-center p-2'>Order Total: {Total+TaxAndVat} $</p>
-                <div className="cartReview w-48 rounded bg-gray-400 text-lg font-bold p-2 mb-1 text-center cursor-pointer hover:bg-yellow-400">Order Place</div>
+                <Link to='/order-confirmPage'> <div onClick={()=>props.OrderConfirmHandel()} className="cartReview w-48 rounded bg-gray-400 text-lg font-bold p-2 mb-1 text-center cursor-pointer hover:bg-yellow-400">Order Place</div></Link>
         </div>
         </div>
     );

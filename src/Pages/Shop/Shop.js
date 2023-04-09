@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import FakeData from '../../e-commerce-fakedata.json';
 import ProductCard from '../../Components/ProductCard/ProductCard';
-import { addToDb } from '../../ema-john-resources-main/utilities/fakedb';
+import { addToDb, getShoppingCart } from '../../ema-john-resources-main/utilities/fakedb';
 import Cart from '../../Components/Cart/Cart';
 
 
 
 const Shop = () => {
-    const FakeData12 = FakeData.slice(30,42);
+    const FakeData12 = FakeData.slice(3, 15);
     const [addToCart, setAddToCart] = useState([]);
-    console.log(addToCart);
 
     const AddProductToCart =(singleProduct)=>{
         const newCartAdd = [...addToCart, singleProduct];
         setAddToCart(newCartAdd);
         addToDb(singleProduct.id)
     }
+
+    useEffect(()=>{
+        const saveCartProduct = getShoppingCart();
+        const saveCartId = Object.keys(saveCartProduct);
+
+        const saveCartProducts = saveCartId.map(id =>{
+        const saveProducts = FakeData.find(pd => pd.id === id);
+            saveProducts.quantity =  saveCartProduct[id];
+            return saveProducts;
+        })
+            setAddToCart(saveCartProducts);
+    },[])
     return (
         <div className='py-10 bg-gray-200 flex  '>
             <div className="cardContainer container mx-auto grid grid-cols-3 px-10 gap-10 justify-center">

@@ -8,6 +8,7 @@ import LogIn from './Pages/LogIn/LogIn';
 import CartPage from './Pages/CartPage/CartPage';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import NoMatch from './Pages/NoMatch/NoMatch';
+import OrderConfirmPage from './Pages/OrderConfirmPage/OrderConfirmPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/products/:id" element={ <ProductDetails /> } />
             <Route path='/cartPage' element={ <CartPage /> } />
             <Route path='/logInPage' element={ <LogIn /> } />
+            <Route path='/order-confirmPage' element={ <OrderConfirmPage /> } />
             <Route path='*' element={ <NoMatch /> } />
         </Routes>
       <Footer />
