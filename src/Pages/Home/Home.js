@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from '../../Components/Slider/Slider';
-import Shop from '../Shop/Shop';
 import ProductCategory from '../../Components/ProductCategory/ProductCategory';
+import Shop from '../Shop/Shop';
 
 
 const Home = () => {
@@ -12,6 +12,9 @@ const Home = () => {
            </div>
            <div className="category">
             <ProductCategory />
+           </div>
+           <div className="shop mt-10">
+            <Shop />
            </div>
         </div>
     );

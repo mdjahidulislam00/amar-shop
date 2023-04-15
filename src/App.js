@@ -9,7 +9,9 @@ import CartPage from './Pages/CartPage/CartPage';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import NoMatch from './Pages/NoMatch/NoMatch';
 import OrderConfirmPage from './Pages/OrderConfirmPage/OrderConfirmPage';
+import { createContext } from 'react';
 
+export const cartProducts = createContext;
 function App() {
   return (
     <div>

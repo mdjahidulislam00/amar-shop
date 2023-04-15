@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaBus, FaFemale, FaFootballBall, FaHome, FaMale, FaMobile, FaMobileAlt, FaPrescriptionBottle, FaShoePrints, FaTv } from 'react-icons/fa';
+import { FaBus, FaFemale, FaFootballBall, FaHome, FaMale, FaMobileAlt, FaPrescriptionBottle, FaShoePrints, FaTv } from 'react-icons/fa';
 
 const ProductCategory = () => {
     return (
