@@ -27,7 +27,7 @@ const ReviewCart = (props) => {
                     <p><span className="font-bold ">Tax & Vat :</span> {TaxAndVat} $</p>
                 </div>
                 <p className='text-lg text-red-500 font-bold text-center p-2'>Order Total: {Total+TaxAndVat} $</p>
-                <Link to='/order-confirmPage'> <div onClick={()=>props.OrderConfirmHandel()} className="cartReview w-48 rounded bg-gray-400 text-lg font-bold p-2 mb-1 text-center cursor-pointer hover:bg-yellow-400">Order Place</div></Link>
+                <Link to='/orderConfirmPage'> <div onClick={()=>props.OrderConfirmHandel()} className="cartReview w-48 rounded bg-gray-400 text-lg font-bold p-2 mb-1 text-center cursor-pointer hover:bg-yellow-400">Order Place</div></Link>
         </div>
         </div>
     );
