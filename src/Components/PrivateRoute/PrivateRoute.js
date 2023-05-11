@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { userLogInData } from '../../App';
+import {currentUser} from '../../App';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoute = ({children, ...rest}) => {
-    const [logInUser, setLogInUser] = useContext(userLogInData)
+    const [logInUser, setLogInUser] = useContext(currentUser)
     return (
-        logInUser.email ? <Outlet /> : <Navigate to='/logInPage' />
+        <p>this is Protect Route</p>
     );
 };
 

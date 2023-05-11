@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaCartArrowDown, FaShoppingCart, FaSearch, FaUser } from 'react-icons/fa';
 import Navbar from '../Navbar/Navbar';
 import {NavLink} from 'react-router-dom';
+import { currentUser} from '../../App';
+import { getAuth, signOut } from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import firebaseConfig from '../../firebase.config';
+
+const app = initializeApp(firebaseConfig);
 
 const Header = () => {
+    const[logInUser, setLogInUser] = useContext(currentUser);
+
+    const auth = getAuth(app);
+    const handelSignOutUser = () =>
+        signOut(auth)
+        .then(() => {
+            setLogInUser(' ');
+        // Sign-out successful.
+        }).catch((error) => {
+        // An error happened.
+        });
     return (
         <div className="bg-yellow-600 ">
             <div className='container mx-auto'>
@@ -21,8 +38,8 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="CartAndLogin flex flex-row items-center space-x-3"> 
-                  <NavLink to='/logInPage' > <div className="signInSection border border-white p-3 rounded text-white flex items-center font-semibold justify-center space-x-1 hover:bg-yellow-400"> <FaUser /> <span>Sign In</span> </div> </NavLink>
-                  <NavLink to='/cartPage' > <div className=" p-3 cursor-pointer border border-white rounded flex flex-row items-center space-x-1 text-white text-md font-semibold hover:bg-yellow-400"> <FaShoppingCart /> <span>Cart</span></div>  </NavLink>
+                  <NavLink to='/signUpPage' > <div className="signInSection border border-white p-2 rounded-lg text-white flex items-center font-semibold justify-center space-x-1 hover:bg-yellow-400"> <FaUser /> {logInUser.email ? <span onClick={() => handelSignOutUser()} >{logInUser.displayName}</span> : <span>Sign Up</span>}  </div> </NavLink>
+                  <NavLink to='/cartPage' > <div className=" p-2 cursor-pointer border border-white rounded-lg flex flex-row items-center space-x-1 text-white text-md font-semibold hover:bg-yellow-400"> <FaShoppingCart /> <span>Cart</span></div>  </NavLink>
                 </div>
             </div>
         </div>
