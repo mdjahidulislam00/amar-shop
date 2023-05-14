@@ -6,6 +6,7 @@ import firebaseConfig from '../../firebase.config';
 import { useContext } from 'react';
 import { currentUser } from '../../App';
 import { useEffect } from 'react';
+import { useLocation, useNavigate,  } from 'react-router-dom';
 
 
 
@@ -14,7 +15,7 @@ const app = initializeApp(firebaseConfig);
 
 const SignUp = () => {
     const [logInUser, setLogInUser] = useContext(currentUser);
-    const [newUser, setNewUser] = useState(true);
+    const [newUser, setNewUser] = useState(false);
     const [userInfo, setUserInfo] = useState({
         name:'',
         email: '',
@@ -23,7 +24,9 @@ const SignUp = () => {
     });
 
     const [validationError, setValidationError] = useState({})
-
+    const navigate = useNavigate();
+    const location = useLocation();
+    const {from} = location.state || {from: {pathname: ''}}
     const handelInput = (e) =>{
         setUserInfo({...userInfo, [e.target.name]: e.target.value});
     }
@@ -52,6 +55,7 @@ const SignUp = () => {
             .then((res) => {
                 const user = res.user;
                 setLogInUser(user)
+                navigate('/OrderConfirmPage')
             })
             .catch((error) => {
                 const errorCode = error.code;

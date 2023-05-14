@@ -28,11 +28,9 @@ function App() {
               <Route path='/shop' element={ <Shop /> } />
               <Route path="/products/:id" element={ <ProductDetails /> } />
               <Route path='/cartPage' element={ <CartPage /> } />
-              <Route path='/OrderConfirmPage' 
-                      element={
-                        <OrderConfirmPage />
-                      
-                      }/>
+              <Route path='/OrderConfirmPage'element={<PrivateRoute/> }>
+                <Route path='/OrderConfirmPage' element={ <OrderConfirmPage /> }/>
+                </Route>
               <Route path='/signUpPage' element={ <SignUp /> } />
               <Route path='*' element={ <NoMatch /> } />
           </Routes>

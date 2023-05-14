@@ -38,7 +38,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="CartAndLogin flex flex-row items-center space-x-3"> 
-                  <NavLink to='/signUpPage' > <div className="signInSection border border-white p-2 rounded-lg text-white flex items-center font-semibold justify-center space-x-1 hover:bg-yellow-400"> <FaUser /> {logInUser.email ? <span onClick={() => handelSignOutUser()} >{logInUser.displayName}</span> : <span>Sign Up</span>}  </div> </NavLink>
+                  <NavLink to='/signUpPage' > <div className="signInSection border border-white p-2 rounded-lg text-white flex items-center font-semibold justify-center space-x-1 hover:bg-yellow-400"> <FaUser /> {logInUser.email ? <span onClick={() => handelSignOutUser()} >{logInUser.email.displayName}</span> : <span>Sign Up</span>}  </div> </NavLink>
                   <NavLink to='/cartPage' > <div className=" p-2 cursor-pointer border border-white rounded-lg flex flex-row items-center space-x-1 text-white text-md font-semibold hover:bg-yellow-400"> <FaShoppingCart /> <span>Cart</span></div>  </NavLink>
                 </div>
             </div>
