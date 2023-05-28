@@ -1,7 +1,7 @@
 import React from 'react';
 import FakeData from '../../e-commerce-fakedata.json'
-import { useParams } from 'react-router-dom';
-import { FaStar } from 'react-icons/fa';
+import { Link, useParams } from 'react-router-dom';
+import { FaMinus, FaPlus, FaStar } from 'react-icons/fa';
 import Shop from '../Shop/Shop';
 
 const ProductDetails = () => {
@@ -39,10 +39,21 @@ const ProductDetails = () => {
                         <div className="border border-black rounded-md px-2 cursor-pointer hover:bg-yellow-400">M</div>
                         <div className="border border-black rounded-md px-2 cursor-pointer hover:bg-yellow-400">XL</div>
                     </div>
-                    <div className="price mt-5 text-3xl font-bold text-rose-500  py-5">
+                    <div className="pricing flex flex-row justify-between p-1 mx-1 bg-gray-300 mt-5 w-72 text-lg">
+                        <div className="price px-2 flex items-center text-center rounded bg-slate-100">{price}</div>
+                            <div className='text-lg font-bold flex items-center'>*</div>
+                            <div className="count bg-gray-400 rounded flex p-1">
+                                <div className="minus px-2 cursor-pointer flex items-center hover:text-gray-200"> <FaMinus /> </div>
+                                <div className="countNumber px-2 bg-slate-200 text-center rounded">1</div>
+                                <div className="plus px-2 cursor-pointer flex items-center hover:text-gray-200"> <FaPlus /> </div>
+                            </div>
+                            <div className='text-lg font-bold flex items-center'>=</div>
+                        <div className="price px-2 flex items-center rounded bg-slate-100">{price}</div>
+                    </div>
+                    <div className="price mt-1 text-3xl font-bold text-rose-500  py-5">
                        $ {price}
                     </div>
-                    <span className="button bg-yellow-500 py-2 px-8 text-xl font-bold rounded cursor-pointer hover:bg-yellow-400">Buy</span>
+                    <Link to='/cartPage'><span className="button bg-yellow-500 py-2 px-8 text-xl font-bold rounded cursor-pointer hover:bg-yellow-400">Buy</span></Link> 
                 </div>
             </div>
         </div>

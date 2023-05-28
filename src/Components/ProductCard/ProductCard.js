@@ -5,32 +5,25 @@ import { Link } from 'react-router-dom';
 const ProductCard = (props) => {
     const{name, stock, img, price, ratingsCount, id} = props.FakeData;
     return (
-        <div>
-            <div className="card w-72 border-4 border-gray-100 rounded-md">
-                    <Link to={'/products/' + id} > <div className="cardImage flex justify-center"> <img className='rounded' src={img} style={{width:'280px', height:'250px'}} alt="Card Images" /> </div>
-                    <div className="cardHeader bg-gray-300 py-1 px-2">
-                        <div className='text-blue-500 flex'>In stoke <span className='ml-1 flex items-center'> {stock} </span> </div>
-                        <div className='h-10 text-sm font-semibold flex'>{name}</div>  
-                    </div> </Link>
-                    <div className="info text-center flex justify-between px-2 py-1">
-                        <p>Rating: {ratingsCount} </p>  
-                        <p className='text-yellow-400 flex flex-row space-x-1'>
-                            <FaStar /> <FaStar /> <FaStar /> <FaStar />
-                        </p>                    
-                    </div>
-                    <div className="pricing flex flex-row justify-between p-1 mx-1 bg-gray-300">
-                        <div className="price px-2 flex items-center text-center rounded bg-slate-100">{price} $</div>
-                            <div className='text-lg font-bold flex items-center'>*</div>
-                            <div className="count bg-gray-400 rounded flex p-1">
-                                <div className="minus px-2 cursor-pointer flex items-center hover:text-gray-200"> <FaMinus /> </div>
-                                <div className="countNumber px-2 bg-slate-200 text-center rounded">1</div>
-                                <div className="plus px-2 cursor-pointer flex items-center hover:text-gray-200"> <FaPlus /> </div>
-                            </div>
-                            <div className='text-lg font-bold flex items-center'>=</div>
-                        <div className="price px-2 flex items-center rounded bg-slate-100">{price} $</div>
-                    </div>
-                    <div onClick={()=>props.AddProductToCart(props.FakeData)} className="cartButton bg-yellow-600 text-center text-white font-semibold mx-1 my-1 py-2 rounded cursor-pointer hover:bg-yellow-400">Add to Cart</div>
-            </div>       
+        <div className="product-card hover:scale-105 duration-200">
+           <Link to={'/products/details/' + id} ><div className="">
+                <img src={img} alt=""  className="h-full w-full rounded-lg bg-cover items-center"/>
+            </div>
+            </Link>
+            <div className="card-header mx-2 relative flex flex-row justify-between items-center">
+                <div className="div left-body">
+                    <h2 className="text-blue-500 text-sm">In Stock</h2>
+                    <h2>{name}</h2>
+                    <p className='text-yellow-400 flex flex-row space-x-1 mb-5'>
+                        <FaStar /> <FaStar /> <FaStar /> <FaStar />
+                        <p className='text-black'>({ratingsCount})</p> 
+                    </p>
+                </div>
+                <div className="pricing">
+                    <h2 className='text-yellow-500 text-lg font-semibold'>{price}$</h2>
+                </div>   
+            </div>
+            <div onClick={()=>props.AddProductToCart(props.FakeData)} className="cartButton bg-yellow-600 text-center text-white font-semibold py-2 rounded cursor-pointer hover:bg-yellow-400">Add to Cart</div>
         </div>
     );
 };

@@ -18,7 +18,6 @@ export const currentUser = createContext();
 
 function App() {
   const [logInUser, setLogInUser] = useState({});
-  console.log(logInUser)
   return (
     <currentUser.Provider value={[logInUser, setLogInUser]} >
       <Header />
@@ -26,7 +25,7 @@ function App() {
               <Route exact path="/" element={ <Home /> } />
               <Route path='/home' element={ <Home /> } />
               <Route path='/shop' element={ <Shop /> } />
-              <Route path="/products/:id" element={ <ProductDetails /> } />
+              <Route path="/products/details/:id" element={ <ProductDetails /> } />
               <Route path='/cartPage' element={ <CartPage /> } />
               <Route path='/OrderConfirmPage'element={<PrivateRoute/> }>
                 <Route path='/OrderConfirmPage' element={ <OrderConfirmPage /> }/>
